@@ -1,0 +1,129 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "first-render-001.png"
+    }
+  },
+  "2": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "ltx-video-2b-v0.9.1.safetensors"
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "ltxv"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "slow cinematic push-in, subtle morning haze drifting, soft sunlight shimmer, gentle movement in trees and atmosphere, realistic camera motion, stable composition",
+      "clip": [
+        "3",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "blurry, low quality, distorted, ugly, deformed, fast motion, jittery, flickering, bad anatomy, character, person, human, face, warping, morphing, artifacts, noise",
+      "clip": [
+        "3",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "LTXVImgToVideo",
+    "inputs": {
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ],
+      "image": [
+        "1",
+        0
+      ],
+      "width": 768,
+      "height": 512,
+      "length": 121,
+      "batch_size": 1,
+      "strength": 1.0
+    }
+  },
+  "7": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 12345,
+      "steps": 30,
+      "cfg": 4.0,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0,
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "6",
+        1
+      ],
+      "latent_image": [
+        "6",
+        2
+      ]
+    }
+  },
+  "8": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "7",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    }
+  },
+  "9": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ],
+      "fps": 24.0
+    }
+  },
+  "10": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "9",
+        0
+      ],
+      "filename_prefix": "first-video",
+      "format": "mp4",
+      "codec": "h264"
+    }
+  }
+}

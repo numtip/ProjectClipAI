@@ -1,0 +1,10 @@
+release: AI Clips Factory v1.1 production proven
+
+- Production pipeline validated (Phase 3C-5D)
+- Multi-shot workflow validated (4 shots from single source)
+- Batch automation validated (render-batch-ltx.ps1 + assemble-batch.bat)
+- Context preservation system added (CONTEXT_PACK.md, HANDOFF.md, START_NEW_SESSION.md)
+- Knowledge base established (kb/ with 8 governance files)
+- WAN 2.1 retired, LTX Video 2B v0.9.1 production baseline
+- 100% technical QA pass rate across all renders
+- .gitignore configured for external model library preservation

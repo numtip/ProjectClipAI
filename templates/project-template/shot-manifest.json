@@ -1,0 +1,79 @@
+{
+  "project_id": "001-example",
+  "source_image": "assets/source.png",
+  "workflow": "workflows/comfyui/first-video/first-video-002.json",
+  "comfyui": {
+    "url": "http://127.0.0.1:8188",
+    "input_image": "first-render-001.png"
+  },
+  "output_dir": "outputs",
+  "export_dir": "exports",
+  "render_settings": {
+    "resolution": "768x512",
+    "fps": 24,
+    "frames": 121,
+    "steps": 30,
+    "cfg": 4.0,
+    "sampler": "euler",
+    "scheduler": "normal"
+  },
+  "assembly": {
+    "hard_cuts": {
+      "enabled": true,
+      "method": "concat",
+      "description": "Stream copy, lossless"
+    },
+    "fade_transitions": {
+      "enabled": true,
+      "method": "xfade",
+      "duration": 0.4,
+      "description": "0.4s crossfade, re-encode CRF 18"
+    }
+  },
+  "shots": [
+    {
+      "id": "Shot01",
+      "prompt_category": "Drone Aerial",
+      "prompt": "cinematic drone flight above agricultural campus, gentle forward movement, trees swaying naturally, subtle fog, mountains in background, realistic aerial documentary footage, photorealistic, natural lighting",
+      "negative_prompt": "blurry, low quality, distorted, ugly, deformed, fast motion, jittery, flickering, bad anatomy, character, person, human, face, warping, morphing, artifacts, noise",
+      "seed": 101,
+      "duration_seconds": 5,
+      "resolution": "768x512",
+      "fps": 24,
+      "frames": 121
+    },
+    {
+      "id": "Shot02",
+      "prompt_category": "Agriculture",
+      "prompt": "smooth drone descent toward lush green rice terraces, agricultural research plots, rows of crops gently swaying, morning sunlight breaking through mist, documentary cinematography style, natural colors, gentle downward camera movement",
+      "negative_prompt": "blurry, low quality, distorted, ugly, deformed, fast motion, jittery, flickering, bad anatomy, character, person, human, face, warping, morphing, artifacts, noise",
+      "seed": 202,
+      "duration_seconds": 5,
+      "resolution": "768x512",
+      "fps": 24,
+      "frames": 121
+    },
+    {
+      "id": "Shot03",
+      "prompt_category": "Smart Agriculture",
+      "prompt": "close-up shot of smart agriculture monitoring station in rice field, sensor equipment among green plants, IoT antennas, educational documentary aesthetic, clean crisp lighting, slight camera orbit",
+      "negative_prompt": "blurry, low quality, distorted, ugly, deformed, fast motion, jittery, flickering, bad anatomy, character, person, human, face, warping, morphing, artifacts, noise",
+      "seed": 303,
+      "duration_seconds": 5,
+      "resolution": "768x512",
+      "fps": 24,
+      "frames": 121
+    },
+    {
+      "id": "Shot04",
+      "prompt_category": "Hero Ending",
+      "prompt": "golden hour wide shot of agricultural campus, warm sunset light over terraced fields, mountains in background with soft haze, peaceful countryside atmosphere, slow cinematic crane rise, photorealistic, warm color grading",
+      "negative_prompt": "blurry, low quality, distorted, ugly, deformed, fast motion, jittery, flickering, bad anatomy, character, person, human, face, warping, morphing, artifacts, noise",
+      "seed": 404,
+      "duration_seconds": 5,
+      "resolution": "768x512",
+      "fps": 24,
+      "frames": 121
+    }
+  ]
+}
